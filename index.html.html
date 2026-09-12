@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amber Hollow Pottery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --clay-dark:#2B2723;
+    --clay-surface:#352F29;
+    --clay-line:#4A423A;
+    --glaze-gold:#C48A3B;
+    --glaze-gold-soft:#8C6A3D;
+    --text-light:#EDE6DA;
+    --text-muted:#A89E90;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--clay-dark);
+    color:var(--text-light);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.6;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  a{color:inherit;}
+
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:10;
+    background:rgba(43,39,35,0.9);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--clay-line);
+  }
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 32px;
+    max-width:1080px;
+    margin:0 auto;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-size:1.15rem;
+    font-weight:600;
+  }
+  .navlinks{
+    display:flex;
+    gap:28px;
+    font-size:0.92rem;
+  }
+  .navlinks a{
+    text-decoration:none;
+    color:var(--text-muted);
+    transition:color 0.2s ease;
+  }
+  .navlinks a:hover, .navlinks a:focus-visible{color:var(--text-light);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:110px 0 90px;
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:48px;
+    align-items:end;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5vw, 4.1rem);
+    line-height:1.05;
+    max-width:11ch;
+  }
+  .hero .sub{
+    color:var(--text-muted);
+    font-size:1.05rem;
+    max-width:38ch;
+    margin-top:22px;
+  }
+  .hero-side{
+    border-left:1px solid var(--clay-line);
+    padding-left:28px;
+    font-size:0.95rem;
+    color:var(--text-muted);
+  }
+  .hero-side p + p{margin-top:14px;}
+  .cta{
+    display:inline-block;
+    margin-top:28px;
+    padding:13px 26px;
+    background:var(--glaze-gold);
+    color:#2B2723;
+    text-decoration:none;
+    font-weight:500;
+    font-size:0.95rem;
+    border-radius:2px;
+    transition:background 0.2s ease;
+  }
+  .cta:hover, .cta:focus-visible{background:#D89C4E;}
+
+  /* ---------- Section shared ---------- */
+  section{padding:80px 0;border-top:1px solid var(--clay-line);}
+  .kicker{
+    color:var(--glaze-gold-soft);
+    font-size:0.9rem;
+    margin-bottom:10px;
+  }
+  section h2{
+    font-size:clamp(1.8rem, 3vw, 2.3rem);
+    margin-bottom:28px;
+  }
+
+  /* ---------- About ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    align-items:start;
+  }
+  .about-grid p{
+    color:var(--text-muted);
+    max-width:46ch;
+  }
+  .about-grid p + p{margin-top:16px;}
+
+  /* ---------- Work gallery ---------- */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:2px;
+    background:var(--clay-line);
+  }
+  .piece{
+    background:var(--clay-surface);
+    aspect-ratio:4/5;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:18px;
+    position:relative;
+    overflow:hidden;
+  }
+  .piece .glaze{
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at 30% 25%, var(--glaze-gold-soft), transparent 60%);
+    opacity:0.35;
+  }
+  .piece h3{
+    font-size:1.05rem;
+    font-weight:500;
+    position:relative;
+  }
+  .piece span{
+    font-size:0.82rem;
+    color:var(--text-muted);
+    position:relative;
+  }
+
+  /* ---------- Process ---------- */
+  .process{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:24px;
+  }
+  .step{border-top:2px solid var(--glaze-gold-soft); padding-top:16px;}
+  .step .n{
+    font-family:'Fraunces', serif;
+    font-size:1.6rem;
+    color:var(--glaze-gold);
+    display:block;
+    margin-bottom:8px;
+  }
+  .step p{color:var(--text-muted); font-size:0.92rem;}
+
+  /* ---------- Contact ---------- */
+  .contact{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+  }
+  .contact form{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .contact label{
+    font-size:0.85rem;
+    color:var(--text-muted);
+    display:block;
+    margin-bottom:6px;
+  }
+  .contact input, .contact textarea{
+    width:100%;
+    background:var(--clay-surface);
+    border:1px solid var(--clay-line);
+    color:var(--text-light);
+    padding:11px 12px;
+    font-family:inherit;
+    font-size:0.95rem;
+    border-radius:2px;
+  }
+  .contact input:focus-visible, .contact textarea:focus-visible{
+    outline:2px solid var(--glaze-gold);
+    outline-offset:1px;
+  }
+  .contact button{
+    align-self:flex-start;
+    margin-top:6px;
+    padding:12px 24px;
+    background:var(--glaze-gold);
+    color:#2B2723;
+    border:none;
+    font-weight:500;
+    font-size:0.95rem;
+    cursor:pointer;
+    border-radius:2px;
+    transition:background 0.2s ease;
+  }
+  .contact button:hover, .contact button:focus-visible{background:#D89C4E;}
+  .contact-info p{color:var(--text-muted); margin-bottom:8px;}
+  .contact-info .big{
+    font-family:'Fraunces', serif;
+    color:var(--text-light);
+    font-size:1.3rem;
+    margin-bottom:18px;
+  }
+
+  footer{
+    padding:32px;
+    text-align:center;
+    color:var(--text-muted);
+    font-size:0.85rem;
+    border-top:1px solid var(--clay-line);
+  }
+
+  @media (max-width: 760px){
+    .hero{grid-template-columns:1fr; padding-top:90px;}
+    .hero-side{border-left:none; border-top:1px solid var(--clay-line); padding-left:0; padding-top:20px;}
+    .about-grid, .contact{grid-template-columns:1fr;}
+    .gallery{grid-template-columns:repeat(2, 1fr);}
+    .process{grid-template-columns:repeat(2, 1fr);}
+    .navlinks{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="brand">Amber Hollow</div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Commission</a>
+    </div>
+  </nav>
+</header>
+
+<div class="wrap">
+  <section class="hero" style="border-top:none;">
+    <div>
+      <h1>Stoneware, thrown slow and fired hot.</h1>
+      <p class="sub">A one-woman pottery studio in the hills outside Asheville, making tableware and vessels meant for daily use, not the shelf.</p>
+      <a href="#work" class="cta">See the work</a>
+    </div>
+    <div class="hero-side">
+      <p>Every piece is wheel-thrown from stoneware clay, glazed with hand-mixed ash and iron glazes, and fired in a wood kiln over three days.</p>
+      <p>Based in Marshall, NC. Shipping across the US.</p>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="kicker">About the studio</div>
+    <h2>Clay, dug close to home</h2>
+    <div class="about-grid">
+      <p>Amber Hollow started in 2016 in a converted tobacco barn, with a single kick wheel and a borrowed kiln. The clay comes from a pit twenty minutes up the road, screened and mixed by hand before it ever touches the wheel.</p>
+      <p>Each glaze is formulated from wood ash, local rock, and iron oxide — the same materials a potter here would have reached for a century ago. No two firings come out quite the same, and that's the point.</p>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="kicker">Selected work</div>
+    <h2>Pieces from the last firing</h2>
+    <div class="gallery">
+      <div class="piece"><div class="glaze"></div><h3>Ash Bowl</h3><span>Stoneware, ash glaze</span></div>
+      <div class="piece"><div class="glaze"></div><h3>Tall Pitcher</h3><span>Iron glaze, wood-fired</span></div>
+      <div class="piece"><div class="glaze"></div><h3>Nesting Cups, set of 4</h3><span>Speckled stoneware</span></div>
+      <div class="piece"><div class="glaze"></div><h3>Dinner Plate</h3><span>Matte ash glaze</span></div>
+      <div class="piece"><div class="glaze"></div><h3>Squat Vase</h3><span>Iron-rust glaze</span></div>
+      <div class="piece"><div class="glaze"></div><h3>Serving Bowl, large</h3><span>Wood-fired, unglazed rim</span></div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="kicker">How a piece gets made</div>
+    <h2>From pit to kiln</h2>
+    <div class="process">
+      <div class="step"><span class="n">01</span><p>Clay is dug and screened by hand, then aged for at least two weeks before throwing.</p></div>
+      <div class="step"><span class="n">02</span><p>Each piece is thrown on the wheel, trimmed the next day, and left to dry slowly.</p></div>
+      <div class="step"><span class="n">03</span><p>Glaze is mixed fresh for each firing and applied by dipping or brushing.</p></div>
+      <div class="step"><span class="n">04</span><p>The kiln is loaded by hand and fired with wood for three days straight.</p></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="kicker">Get in touch</div>
+    <h2>Commission a piece</h2>
+    <div class="contact">
+      <div class="contact-info">
+        <p class="big">Custom orders open monthly</p>
+        <p>Tell me what you're picturing — a set, a single vessel, a specific glaze — and I'll follow up with a sketch and a quote.</p>
+        <p>hello@amberhollowpottery.com</p>
+        <p>Marshall, North Carolina</p>
+      </div>
+      <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='Sent';">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" type="text" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" type="email" required>
+        </div>
+        <div>
+          <label for="msg">What are you picturing?</label>
+          <textarea id="msg" rows="4"></textarea>
+        </div>
+        <button type="submit">Send message</button>
+      </form>
+    </div>
+  </section>
+</div>
+
+<footer>Amber Hollow Pottery &middot; Marshall, NC</footer>
+
+</body>
+</html>
